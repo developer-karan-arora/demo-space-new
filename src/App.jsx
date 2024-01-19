@@ -19,7 +19,7 @@ function App() {
             <p>{"MISSFIRE : " + missfire}</p>
           </div>
           <div className="red-lane"></div>
-          
+          <div className="player"></div>
         </div>
       </div>
     </div>

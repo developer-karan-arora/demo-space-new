@@ -79,7 +79,7 @@ function App() {
     }
     console.log("🎹 Keyboard Interupt",currentlyRemainingEnemy,currentWave,remainingEnemy,emenyDetailedArray);
 
-    // lock mechanism
+    // STEP -2 lock mechanism
     let keyPressed = event.key;
     let isFound = false;
     if (lockedEnemyIndex == -1) { // if no enemy is selected 
@@ -98,7 +98,23 @@ function App() {
       isFound = true;
       console.log("🔥 enemy index",lockedEnemyIndex,emenyDetailedArray[lockedEnemyIndex].text);
     }
+
+    // STEP 3 ->shoot mechanism
+    if (!isFound) {
+      console.log("missfire ----", missfire);
+      let tempMisFire = missfire + 1;
+      setMissfire(tempMisFire);
+      return;
+    }
+    let existingState = [...emenyDetailedArray];
+    let text = emenyDetailedArray[lockedEnemyIndex].text;
+    let newText = text.substring(1);
+    existingState[lockedEnemyIndex].text = newText;
+    setEmenyDetailedArray(existingState);
+    if (newText.length == 0) lockedEnemyIndex = -1;
+    console.log("newText", newText);
   }
+  
   useEffect(() => {
     document.addEventListener("keydown", handleFire);
     return (e) => document.removeEventListener("keydown", handleFire);

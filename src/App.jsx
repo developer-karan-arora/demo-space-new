@@ -51,7 +51,7 @@ function App() {
 
     for (let i = 0; i < remEnemy; i++) {
       let random_x = Math.floor(Math.random() * 400); // random x cordinate
-      let random_y = Math.floor(Math.random() * -80)+450; // random y cordinate
+      let random_y = Math.floor(Math.random() * -80); // random y cordinate
       let enemyObj = { x: random_x, y: random_y, text: randomWords[i] };
       tempArray.push(enemyObj);
     }
@@ -60,10 +60,13 @@ function App() {
     console.log("🎃 Genrated waves", tempArray, remainingEnemy);
   }
 
-  useEffect(()=>handleWaves(),[]) // it will run only once as [] empty array
+  useEffect(() => handleWaves(), []); // it will run only once as [] empty array
 
   // ---------------------------------------------------
-
+  useEffect(() => {
+    document.addEventListener("keydown", handleFire);
+    return (e) => document.removeEventListener("keydown", handleFire);
+  }, [emenyDetailedArray, missfire]);
   return (
     <div className="game-bg">
       <div className="game">

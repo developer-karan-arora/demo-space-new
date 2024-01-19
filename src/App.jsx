@@ -11,12 +11,59 @@ function App() {
     { x: 100, y: 100, text: "codedamn" },
   ]);
 
-  // global varriables 
+  // global varriables
   let lockedEnemyIndex = -1;
   let remainingEnemy = 0;
 
   // handle wave
-  
+  function handleWaves() {
+    // STEP 1->set enemy in each wave
+    let enemyCount = 0;
+    if (currentWave == 0) enemyCount = 1;
+    if (currentWave == 1) enemyCount = 2;
+    if (currentWave == 2) enemyCount = 3;
+    if (currentWave == 3) enemyCount = 4;
+    if (currentWave == 4) enemyCount = 5;
+    if (currentWave == 5) return console.log("Game Completed");
+
+    // STEP 2-> Genrate random words
+    let wordCounter = enemyCount;
+    let randomWords = [];
+    while (wordCounter > 0) {
+      let randomNumber = Math.floor(Math.random() * Wavedata.length);
+      let randomWord = Wavedata[randomNumber];
+      if (!randomWords.includes(randomWord)) randomWords.push(randomWord);
+      wordCounter--;
+    }
+
+    // STEP 3 -> Varriables
+    let newWave = currentWave + 1;
+    setCurrentWave(newWave);
+
+    remainingEnemy = randomWords.length;
+    console.log("🧨 HANDLE WAVE IS CALLED");
+    handleDisplayEnemy(randomWords);
+  }
+
+  function handleDisplayEnemy(randomWords) {
+    let tempArray = [];
+    let remEnemy = randomWords.length;
+
+    for (let i = 0; i < remEnemy; i++) {
+      let random_x = Math.floor(Math.random() * 400); // random x cordinate
+      let random_y = Math.floor(Math.random() * -80); // random y cordinate
+      let enemyObj = { x: random_x, y: random_y, text: randomWords[i] };
+      tempArray.push(enemyObj);
+    }
+
+    setEmenyDetailedArray(tempArray);
+    console.log("🎃 Genrated waves", tempArray, remainingEnemy);
+  }
+
+  useEffect(()=>handleWaves(),[]) // it will run only once as [] empty array
+
+  // ---------------------------------------------------
+
   return (
     <div className="game-bg">
       <div className="game">

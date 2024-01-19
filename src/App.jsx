@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Wavedata } from "./data/Wavedata";
 import "./App.css";
 import "./Game.css";
 
@@ -10,6 +11,12 @@ function App() {
     { x: 100, y: 100, text: "codedamn" },
   ]);
 
+  // global varriables 
+  let lockedEnemyIndex = -1;
+  let remainingEnemy = 0;
+
+  // handle wave
+  
   return (
     <div className="game-bg">
       <div className="game">

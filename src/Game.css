@@ -3,3 +3,17 @@
   width: 100vw;
   background-image: url("./assets/page.png");
 }
+.game {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.game-container {
+  height: 720px;
+  width: 480px;
+  background-image: url(./assets/stars.jpg);
+  background-repeat: no-repeat;
+  overflow: hidden;
+}

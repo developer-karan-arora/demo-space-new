@@ -1,0 +1,5 @@
+.game-bg {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("./assets/page.png");
+}

@@ -1,13 +1,9 @@
-import { useState } from 'react'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
+import "./Game.css";
 
 function App() {
-
-  return (
-    <>
-      <p>Hello codedadm</p>
-    </>
-  )
+  return <div className="game-bg"></div>;
 }
 
-export default App
+export default App;

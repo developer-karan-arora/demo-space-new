@@ -63,6 +63,25 @@ function App() {
   useEffect(() => handleWaves(), []); // it will run only once as [] empty array
 
   // ---------------------------------------------------
+  const handleFire = (event) => {
+    // STEP 1 check waves and win
+    let currentlyRemainingEnemy = 0;
+    for (let i = 0; i < emenyDetailedArray.length; i++) {
+      if (emenyDetailedArray[i].text.length > 0) currentlyRemainingEnemy++;
+    }
+    if (currentlyRemainingEnemy === 0) {
+      if (currentWave == 5) {
+        alert(`You have winned game with misfiewcount as ${missfire}`);
+        window.location.reload();
+      } 
+      handleWaves();
+      return;
+    }
+    // console.log("🎹 Keyboard Interupt",currentlyRemainingEnemy,currentWave,remainingEnemy,emenyDetailedArray);
+    
+    let keyPressed = event.key;
+
+  }
   useEffect(() => {
     document.addEventListener("keydown", handleFire);
     return (e) => document.removeEventListener("keydown", handleFire);

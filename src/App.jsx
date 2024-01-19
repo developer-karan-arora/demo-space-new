@@ -114,11 +114,33 @@ function App() {
     if (newText.length == 0) lockedEnemyIndex = -1;
     console.log("newText", newText);
   }
-  
+
   useEffect(() => {
     document.addEventListener("keydown", handleFire);
     return (e) => document.removeEventListener("keydown", handleFire);
   }, [emenyDetailedArray, missfire]);
+
+  useEffect(() => {
+    const updatePosition = setInterval(() => {
+      let existingState = [...emenyDetailedArray];
+      console.log(existingState,emenyDetailedArray)
+      for(let i=0;i<emenyDetailedArray.length;i++){
+        let enemy = emenyDetailedArray[i]
+        let new_y = enemy.y
+        if(new_y>650) {
+          alert("GameOver") 
+          window.location.reload();
+          // return;
+        }
+        existingState[i].y = new_y + 10
+      }
+      setEmenyDetailedArray(existingState); 
+      // setCounter(prevCounter => prevCounter + 1);
+    }, 200 * 1);
+    return () => clearInterval(updatePosition);
+  }, [emenyDetailedArray]);
+
+  
   return (
     <div className="game-bg">
       <div className="game">

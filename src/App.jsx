@@ -77,10 +77,27 @@ function App() {
       handleWaves();
       return;
     }
-    // console.log("🎹 Keyboard Interupt",currentlyRemainingEnemy,currentWave,remainingEnemy,emenyDetailedArray);
-    
-    let keyPressed = event.key;
+    console.log("🎹 Keyboard Interupt",currentlyRemainingEnemy,currentWave,remainingEnemy,emenyDetailedArray);
 
+    // lock mechanism
+    let keyPressed = event.key;
+    let isFound = false;
+    if (lockedEnemyIndex == -1) { // if no enemy is selected 
+      console.log(emenyDetailedArray);
+      for (let i = 0; i < emenyDetailedArray.length; i++) {
+        let enemyObj = emenyDetailedArray[i];
+        let enemyWord = enemyObj.text;
+        let enemyLetter = enemyWord[0];
+        if ( enemyLetter && enemyLetter.toLowerCase() == keyPressed.toLowerCase()) {
+          isFound = true;
+          lockedEnemyIndex = i;
+          console.log("🔥 We can Fire", i, emenyDetailedArray[i].text);
+        }
+      }
+    } else { // if enemy is already selected 
+      isFound = true;
+      console.log("🔥 enemy index",lockedEnemyIndex,emenyDetailedArray[lockedEnemyIndex].text);
+    }
   }
   useEffect(() => {
     document.addEventListener("keydown", handleFire);

@@ -18,6 +18,8 @@ function App() {
             <p>{"CURRENT WAVE : " + currentWave}</p>
             <p>{"MISSFIRE : " + missfire}</p>
           </div>
+          <div className="red-lane"></div>
+          
         </div>
       </div>
     </div>

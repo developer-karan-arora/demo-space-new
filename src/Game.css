@@ -16,4 +16,30 @@
   background-image: url(./assets/stars.jpg);
   background-repeat: no-repeat;
   overflow: hidden;
+  position: relative;
+}
+.game-grid-animation {
+  position: absolute;
+  height: 1720px;
+  width: 1480px;
+  opacity: 0.4;
+  background-color: #40c3ff2a;
+  transform: rotate(45deg) translate(-50%);
+
+  animation-name: game-grid-animataion;
+  animation-duration:25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  background-size: 2px;
+  background-size: 20px 20px;
+  background-image: url(./assets/bluegrid.png);
+}
+@keyframes game-grid-animataion {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 100% 100%;
+  }
 }

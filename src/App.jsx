@@ -6,7 +6,10 @@ function App() {
   return (
     <div className="game-bg">
       <div className="game">
-        <div className="game-container"></div>
+        <div className="game-container">
+          <div className="game-grid-animation"></div>
+          <div></div>
+        </div>
       </div>
     </div>
   );
